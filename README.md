@@ -1,4 +1,4 @@
-# VRCFT_TobiiXR_HTCViveDevkit
+# TobiiHTCViveDevkit VRCFT
 VRCFT v5 Module that adds Eye Tracking from TobiiXR HTC Vive Devkits
 
 ![TobiiDevkit](TobiiDevkit.png)
