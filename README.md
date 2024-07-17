@@ -15,4 +15,4 @@ Install the module Into VRCFT.
 
 Due to an issue with Tobii Stream Engine this module will always fail to shut down its own thread during teardown (closing VRCFT/ Uninstalling Modules). This will cause VRCFT to freeze until it is shut down forcefully (Such as with Task Manager). 
 
-If you plan on uninstalling modules. You will either need to Run VRCFT with the Devkit Disconnected, or delete the modules manually (They are typically stored within "C:\Users\<user>\AppData\Roaming\VRCFaceTracking\CustomLibs"
+If you plan on uninstalling this or other modules. You will either need to Run VRCFT with the Devkit Disconnected, or delete the modules manually (They are typically stored within "C:\Users\<user>\AppData\Roaming\VRCFaceTracking\CustomLibs"
