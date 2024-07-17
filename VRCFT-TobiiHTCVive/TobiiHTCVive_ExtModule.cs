@@ -25,7 +25,7 @@ public class TobiiHTCVive : ExtTrackingModule
         ModuleInformation.Name = "Tobii HTC Vive Devkit";
 
         // Example of an embedded image stream being referenced as a stream
-        var stream = GetType().Assembly.GetManifestResourceStream("VRCFaceTracking.TobiiHTCVive.Resources.logo.png");
+        var stream = GetType().Assembly.GetManifestResourceStream("VRCFaceTracking.TobiiHTCVive.Resources.Icon.png");
 
         // Setting the stream to be referenced by VRCFaceTracking.
         ModuleInformation.StaticImages = stream != null ? new List<Stream> { stream } : ModuleInformation.StaticImages;
