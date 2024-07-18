@@ -117,7 +117,8 @@ public class TobiiHTCVive : ExtTrackingModule
         //Declare Ofsetting data for gaze
         var YOffset = (-0.25f);
         var XOffset = (0f);
-        var  Normalization = (0.5f);
+        var XNormalization = (0.5f);
+        var YNormalization = (0.5f);
 
 
         //Left Eye        
@@ -126,8 +127,8 @@ public class TobiiHTCVive : ExtTrackingModule
             UnifiedTracking.Data.Eye.Left.Openness = consumerData.left.blink == tobii_state_bool_t.TOBII_STATE_BOOL_TRUE ? (float)0 : (float)1;
  
         //Gaze Data
-            UnifiedTracking.Data.Eye.Left.Gaze.x = ((consumerData.left.pupil_position_in_sensor_area_xy.x * 2 - 1) - XOffset) / (float)Normalization;
-            UnifiedTracking.Data.Eye.Left.Gaze.y = ((consumerData.left.pupil_position_in_sensor_area_xy.y * -2 + 1) + YOffset) / (float)Normalization;
+            UnifiedTracking.Data.Eye.Left.Gaze.x = ((consumerData.left.pupil_position_in_sensor_area_xy.x * 2 - 1) - XOffset) /  XNormalization;
+            UnifiedTracking.Data.Eye.Left.Gaze.y = ((consumerData.left.pupil_position_in_sensor_area_xy.y * -2 + 1) + YOffset) / YNormalization;
 
 
         //Right Eye
@@ -136,8 +137,8 @@ public class TobiiHTCVive : ExtTrackingModule
             UnifiedTracking.Data.Eye.Right.Openness = consumerData.right.blink == tobii_state_bool_t.TOBII_STATE_BOOL_TRUE ? (float)0 : (float)1;
 
         //Gaze Data
-            UnifiedTracking.Data.Eye.Right.Gaze.x = ((consumerData.right.pupil_position_in_sensor_area_xy.x * 2 - 1)+ XOffset) / (float)Normalization;
-            UnifiedTracking.Data.Eye.Right.Gaze.y = ((consumerData.right.pupil_position_in_sensor_area_xy.y *-2 + 1)+ YOffset) / (float)Normalization;
+            UnifiedTracking.Data.Eye.Right.Gaze.x = ((consumerData.right.pupil_position_in_sensor_area_xy.x * 2 - 1)+ XOffset) / XNormalization;
+            UnifiedTracking.Data.Eye.Right.Gaze.y = ((consumerData.right.pupil_position_in_sensor_area_xy.y *-2 + 1)+ YOffset) / YNormalization;
         
     }
 }
