@@ -27,7 +27,7 @@ public class TobiiHTCVive : ExtTrackingModule
 
         // Example of an embedded image stream being referenced as a stream
         var stream = GetType().Assembly.GetManifestResourceStream("VRCFaceTracking.TobiiHTCVive.Resources.Icon.png");
-        
+
         // Setting the stream to be referenced by VRCFaceTracking.
         ModuleInformation.StaticImages = stream != null ? new List<Stream> { stream } : ModuleInformation.StaticImages;
 
@@ -112,26 +112,33 @@ public class TobiiHTCVive : ExtTrackingModule
     }
 
     private void ProcessCallback(ref tobii_wearable_consumer_data_t consumerData, nint userData)
+
     {
-        //Eye Openness Data
+        //Declare Ofsetting data for gaze
+        var YOffset = (-0.25f);
+        var XOffset = (0f);
+        var  Normalization = (0.5f);
+
+
+        //Left Eye        
         if (consumerData.left.pupil_position_in_sensor_area_validity == tobii_validity_t.TOBII_VALIDITY_VALID)
+        //Blink State    
             UnifiedTracking.Data.Eye.Left.Openness = consumerData.left.blink == tobii_state_bool_t.TOBII_STATE_BOOL_TRUE ? (float)0 : (float)1;
+ 
+        //Gaze Data
+            UnifiedTracking.Data.Eye.Left.Gaze.x = ((consumerData.left.pupil_position_in_sensor_area_xy.x * 2 - 1) - XOffset) / (float)Normalization;
+            UnifiedTracking.Data.Eye.Left.Gaze.y = ((consumerData.left.pupil_position_in_sensor_area_xy.y * -2 + 1) + YOffset) / (float)Normalization;
 
+
+        //Right Eye
         if (consumerData.right.pupil_position_in_sensor_area_validity == tobii_validity_t.TOBII_VALIDITY_VALID)
+        //Blink State
             UnifiedTracking.Data.Eye.Right.Openness = consumerData.right.blink == tobii_state_bool_t.TOBII_STATE_BOOL_TRUE ? (float)0 : (float)1;
-       
-        //Eye Gaze Data
-        if (consumerData.left.pupil_position_in_sensor_area_validity == tobii_validity_t.TOBII_VALIDITY_VALID && consumerData.left.blink_validity == tobii_validity_t.TOBII_VALIDITY_VALID)
-        {
-            UnifiedTracking.Data.Eye.Left.Gaze.x = (consumerData.left.pupil_position_in_sensor_area_xy.x * 2 - 1) / (float)0.5;
-            UnifiedTracking.Data.Eye.Left.Gaze.y = (consumerData.left.pupil_position_in_sensor_area_xy.y *-2 + 1) / (float)0.5;
-            if (consumerData.left.pupil_position_in_sensor_area_validity == tobii_validity_t.TOBII_VALIDITY_VALID && consumerData.left.blink_validity == tobii_validity_t.TOBII_VALIDITY_VALID)
 
-            UnifiedTracking.Data.Eye.Right.Gaze.x = (consumerData.right.pupil_position_in_sensor_area_xy.x * 2 - 1) / (float)0.5;
-            UnifiedTracking.Data.Eye.Right.Gaze.y = (consumerData.right.pupil_position_in_sensor_area_xy.y *-2 + 1) / (float)0.5;
-        }
+        //Gaze Data
+            UnifiedTracking.Data.Eye.Right.Gaze.x = ((consumerData.right.pupil_position_in_sensor_area_xy.x * 2 - 1)+ XOffset) / (float)Normalization;
+            UnifiedTracking.Data.Eye.Right.Gaze.y = ((consumerData.right.pupil_position_in_sensor_area_xy.y *-2 + 1)+ YOffset) / (float)Normalization;
+        
     }
 }
-
-
 
