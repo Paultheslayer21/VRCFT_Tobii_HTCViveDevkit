@@ -1,6 +1,6 @@
 {
   "ModuleId": "324b3cd5-5e64-4f3f-b056-12340badc0de",
-  "LastUpdated": "2023-10-13T20:17:00Z",
+  "LastUpdated": "2024-07-20T03:54:00Z",
   "Version": "0.1",
   "Downloads": 0,
   "Ratings": 0,
@@ -8,7 +8,7 @@
   "AuthorName": "Paultheslayer21",
   "ModuleName": "Tobii HTC Vive Devkit",
   "ModuleDescription": "This module provides users with the Tobii HTC Vive Devkit with eyetracking support, supporting VRCFT v5.",
-  "UsageInstructions": "Just install and play.",
+  "UsageInstructions": "Refer to the Github link for instructions.",
   "DownloadUrl": "https://github.com/Paultheslayer21/VRCFT_TobiiXR_HTCViveDevkit/releases",
   "ModulePageUrl": "https://github.com/Paultheslayer21/VRCFT_TobiiXR_HTCViveDevkit",
   "DllFileName": "VRCFaceTracking.TobiiHTCVive.dll"
