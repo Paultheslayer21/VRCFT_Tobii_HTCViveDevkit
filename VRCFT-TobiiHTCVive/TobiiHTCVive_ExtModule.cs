@@ -115,7 +115,7 @@ public class TobiiHTCVive : ExtTrackingModule
 
     {
         //Declare Ofsetting data for gaze
-        var YOffset = (-0.25f);
+        var YOffset = (-0.15f);
         var XOffset = (0f);
         var XNormalization = (0.5f);
         var YNormalization = (0.5f);
